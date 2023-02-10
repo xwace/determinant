@@ -179,7 +179,7 @@ int main() {
   ******************************************************************************
   * @author         : oswin
   * @brief          : input an image with three channels, eg.:Scalar(7,11,13),
-  * fromto = {0,1,1,0,2,2} denotes the sequences of channels,
+  * fromto = {0,1,1,0,2,2} denotes the sequences of corresponding channels,
   * return an image with three channels, Scalar(11,7,13).
   ******************************************************************************
   */  
