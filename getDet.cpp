@@ -166,16 +166,14 @@ double myDeterminant( InputArray _mat )
 }
 
 int main() {
-
-    int nsrcs = 1, ndsts = 1, npairs =2;
+    int nsrcs = 1, ndsts = 1, npairs =3;
     int i,j,k;
-    int fromTo[] = {1,0,0,1};
-    Mat oriI = Mat(20,20,CV_8UC3,Scalar(7,11,13));
-    cout<<oriI<<endl;
-    randu(oriI, 0, 10);
+    int fromTo[] = {1,0,0,1,2,2};
+    Mat oriI = Mat(5,5,CV_8UC3,Scalar(7,11,13));
+    Mat dstI(oriI.size(),CV_8UC3);//todo output img: 11,7,13
     Mat src[] = {oriI};
-    Mat dst[] = {Mat(20,20,CV_8UC3)};
-    int depth(0),esz1(1);
+    Mat dst[] = {dstI};
+    int depth(oriI.depth()),esz1(1);
     int BLOCK_SIZE = 1024;
 
     AutoBuffer<uchar> buf((nsrcs + ndsts + 1)*(sizeof(Mat*) + sizeof(uchar*)) + npairs*(sizeof(uchar*)*2 + sizeof(int)*6));
@@ -224,7 +222,9 @@ int main() {
         cout<< "ddelta[i]: "<<ddelta[i]<<endl;
     }
 
+
     NAryMatIterator it(arrays, ptrs, (int)(nsrcs + ndsts));
+
 
     int total = (int)it.size, blocksize = std::min(total, (int)((BLOCK_SIZE + esz1-1)/esz1));
     cout<<"total: "<<total<<endl;
@@ -253,5 +253,5 @@ int main() {
         }
     }
 
-    cout<<"dst: "<<**dsts<<endl;
+    cout<<"dst: \n"<<dst[0]<<endl;
 }
