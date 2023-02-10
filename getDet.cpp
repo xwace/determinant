@@ -165,6 +165,14 @@ double myDeterminant( InputArray _mat )
     return result;
 }
 
+int mainDet(){
+     Mat det(4,4,CV_32FC1);
+     randu(det,0,1);
+     cout<<"det: "<<det<<endl;
+     auto dt = myDeterminant(det);
+     cout<<dt<<endl;
+}
+
 int main() {
     int nsrcs = 1, ndsts = 1, npairs =3;
     int i,j,k;
